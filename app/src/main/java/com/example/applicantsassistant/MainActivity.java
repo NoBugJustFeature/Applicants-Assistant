@@ -30,14 +30,14 @@ public class MainActivity extends AppCompatActivity {
         // Пример данных для списка 1
         ArrayList<String> list1Data = new ArrayList<>();
         // Добавь свои данные, например:
-         list1Data.add("Университет 1");
+        // list1Data.add("Университет 1");
         // list1Data.add("Университет 2");
 
         // Пример данных для списка 2
         ArrayList<String> list2Data = new ArrayList<>();
         // Добавь свои данные, например:
-         list2Data.add("Специальность 1");
-         list2Data.add("Специальность 2");
+        // list2Data.add("Специальность 1");
+        // list2Data.add("Специальность 2");
 
         setupListView(listView, list1Data, emptyListView1);
         setupListView(listView2, list2Data, emptyListView2);
@@ -49,9 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (data.isEmpty()) {
             emptyView.setVisibility(View.VISIBLE);
-            listView.setVisibility(View.GONE);
         } else {
-            emptyView.setVisibility(View.GONE);
             listView.setVisibility(View.VISIBLE);
         }
     }
