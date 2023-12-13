@@ -2,5 +2,8 @@
     <string name="app_name">Applicant\'s Assistant</string>
     <string name="favorite_universities">Избранные университеты</string>
     <string name="favorite_specialties">Избранные специальности</string>
+    <string name="universities">ВУЗы</string>
+    <string name="specialties">Специальности</string>
+    <string name="favorite">Избранное</string>
 
 </resources>
