@@ -5,5 +5,8 @@
     <string name="universities">ВУЗы</string>
     <string name="specialties">Специальности</string>
     <string name="favorite">Избранное</string>
+    <string name="title_example">Название</string>
+    <string name="description_example">Описание</string>
+    <string name="image_example_text">Фото</string>
 
 </resources>
