@@ -8,5 +8,7 @@
     <string name="title_example">Название</string>
     <string name="description_example">Описание</string>
     <string name="image_example_text">Фото</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

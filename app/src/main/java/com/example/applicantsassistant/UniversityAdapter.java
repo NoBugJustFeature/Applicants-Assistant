@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import androidx.cardview.widget.CardView;
+
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
@@ -24,9 +24,9 @@ public class UniversityAdapter extends RecyclerView.Adapter<UniversityAdapter.Un
 
         public UniversityViewHolder(View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.imageView);
-            titleTextView = itemView.findViewById(R.id.titleTextView);
-            descriptionTextView = itemView.findViewById(R.id.descriptionTextView);
+            imageView = itemView.findViewById(R.id.UniversityImage);
+            titleTextView = itemView.findViewById(R.id.UniversityTitle);
+            descriptionTextView = itemView.findViewById(R.id.UniversityDescription);
         }
     }
 

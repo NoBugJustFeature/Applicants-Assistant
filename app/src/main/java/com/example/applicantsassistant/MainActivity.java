@@ -3,39 +3,46 @@ package com.example.applicantsassistant;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView; // Make sure to include this import
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.applicantsassistant.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        List<University> universities = createTestUniversityList();
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        UniversityAdapter adapter = new UniversityAdapter(universities);
+        binding = ActivityMainBinding.inflate((getLayoutInflater()));
+        setContentView(binding.getRoot());
+        replaceFragment(new UniversityFragment());
 
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
+        binding.bottomNavigationView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+
+            if (itemId == R.id.navigation_universities){
+                replaceFragment(new UniversityFragment());
+            } else if (itemId ==  R.id.navigation_specialties){
+                replaceFragment(new SpecialityFragment());
+            } else if (itemId == R.id.navigation_favorite) {
+                replaceFragment(new FavoriteFragment());
+            }
+
+            return true;
+        });
     }
-    private List<University> createTestUniversityList() {
-        List<University> universities = new ArrayList<>();
-        universities.add(new University("Harvard University", "Private Ivy League university in Cambridge, Massachusetts", R.drawable.ic_launcher_background));
-        universities.add(new University("Massachusetts Institute of Technology (MIT)", "Private research university in Cambridge, Massachusetts", R.drawable.baseline_assignment_ind_24));
-        universities.add(new University("Stanford University", "Private research university in Stanford, California", R.drawable.baseline_home_24));
-        universities.add(new University("Harvard University", "Private Ivy League university in Cambridge, Massachusetts", R.drawable.ic_launcher_background));
-        universities.add(new University("Massachusetts Institute of Technology (MIT)", "Private research university in Cambridge, Massachusetts", R.drawable.baseline_assignment_ind_24));
-        universities.add(new University("Stanford University", "Private research university in Stanford, California", R.drawable.baseline_home_24));
-        universities.add(new University("Harvard University", "Private Ivy League university in Cambridge, Massachusetts", R.drawable.ic_launcher_background));
-        universities.add(new University("Massachusetts Institute of Technology (MIT)", "Private research university in Cambridge, Massachusetts", R.drawable.baseline_assignment_ind_24));
-        universities.add(new University("Stanford University", "Private research university in Stanford, California", R.drawable.baseline_home_24));
-        // Добавьте другие университеты по мере необходимости
 
-        return universities;
+    private void replaceFragment(Fragment fragment){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.activity_main_frame, fragment);
+        fragmentTransaction.commit();
     }
 }
